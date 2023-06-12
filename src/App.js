@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <div>Tic Tac Toe</div>
-      <Game />
+      <Game squareSideLength={3} />
     </div>
   );
 }
