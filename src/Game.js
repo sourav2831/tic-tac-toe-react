@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Board from "./Board";
 import { X, O } from "./constants";
 
 const Game = ({ squareSideLength }) => {
   const [squares, setSquares] = useState(
-    Array.from({ length: squareSideLength }, (v) =>
-      Array.from({ length: squareSideLength }, (v) => null)
+    Array.from({ length: squareSideLength }, () =>
+      Array.from({ length: squareSideLength }, () => null)
     )
   );
   const [isXTurn, setIsXturn] = useState(true);
@@ -62,6 +62,14 @@ const Game = ({ squareSideLength }) => {
       return prev;
     });
   };
+
+  useEffect(() => {
+    setSquares(
+      Array.from({ length: squareSideLength }, () =>
+        Array.from({ length: squareSideLength }, () => null)
+      )
+    );
+  }, [squareSideLength]);
 
   return (
     <div>
